@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RequestMapping("presidents")
 @RestController
@@ -39,4 +40,13 @@ public class PresidentsController {
         presidentService.deletePresident(id);
     }
 
+    @GetMapping("find/{name}")
+    public Set<PresidentDto> findPresidentByName(@PathVariable String name){
+        return presidentService.findPresidentsByName(name);
+    }
+
+    @GetMapping("find-by-party/{party}")
+    public Set<PresidentDto> findPresidentsByPoliticalParty(@PathVariable String party) {
+        return presidentService.findPresidentsByPoliticalParty(party);
+    }
 }
