@@ -40,4 +40,12 @@ public class PresidentServiceImpl implements PresidentService {
         });
         return PresidentMapper.toDto(presidentsRepository.getReferenceById(presidentDto.getId()));
     }
+
+    @Override
+    public PresidentDto updatePresidentPartial(PresidentDto presidentDto) {
+        presidentsRepository.findById(presidentDto.getId()).ifPresent(president -> {
+
+        });
+        return null;
+    }
 }
