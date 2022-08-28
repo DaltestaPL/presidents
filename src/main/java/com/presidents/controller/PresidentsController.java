@@ -31,14 +31,12 @@ public class PresidentsController {
 
     @PatchMapping("update")
     public PresidentDto updatePartial(@RequestBody PresidentDto presidentDto) {
-
-        return null;
+        return presidentService.updatePresidentPartial(presidentDto);
     }
-//
-//    @DeleteMapping("/delete/{id}")
-//    public String deleteByIndex(@PathVariable int id){
-//        PresidentsDB.presidentsRepository.remove(id);
-//        return "Removed!";
-//    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteByIndex(@PathVariable Long id) {
+        presidentService.deletePresident(id);
+    }
 
 }
