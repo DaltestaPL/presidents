@@ -3,6 +3,8 @@ package com.presidents.controller;
 import com.presidents.model.dto.PresidentDto;
 import com.presidents.service.president.PresidentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +30,12 @@ public class PresidentsController {
     @PutMapping("update")
     public PresidentDto update(@RequestBody PresidentDto presidentDto) {
         return presidentService.updatePresident(presidentDto);
+    }
+
+//    Wyłącznie w celach dydaktycznych
+    @ExceptionHandler({RuntimeException.class, IllegalAccessError.class})
+    public final ResponseEntity<Object> handleExceptions(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PatchMapping("update")
