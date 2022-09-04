@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SDA</title>
+</head>
+<body>
+<p th:text="*{name}"></p>
+<p th:text="*{imiona}"></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Imiona</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${imiona.isEmpty()}">
+        <td>Nie ma imion :(</td>
+    </tr>
+    <tr th:each="element : ${imiona}">
+        <td><span th:text="${element}"></span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
