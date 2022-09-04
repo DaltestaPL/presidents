@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav navbar-nav">
-                        <a class="nav-link active" aria-current="page" th:href="@{'/'}">Presidents</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/}">Presidents</a>
                     </li>
                     <li class="nav navbar-nav">
-                        <a class="nav-link" th:href="@{'/?form=true'}">Add President</a>
+                        <a class="nav-link" th:href="@{/?form=true}">Add President</a>
                     </li>
                 </ul>
             </div>
@@ -39,10 +39,11 @@
                 <input id="surname" placeholder="Enter surname" required type="text" th:field="*{surname}"
                        class="form-control">
                 <label for="termFrom">Term From</label>
-                <input id="termFrom" placeholder="Enter termFrom" required type="text" th:field="*{termFrom}"
+                <input id="termFrom" placeholder="Pattern: yyyy-mm-dd hh:mm:ss" required type="text"
+                       th:field="*{termFrom}"
                        class="form-control">
                 <label for="termTo">Term To</label>
-                <input id="termTo" placeholder="Enter termTo" required type="text" th:field="*{termTo}"
+                <input id="termTo" placeholder="Pattern: yyyy-mm-dd hh:mm:ss" required type="text" th:field="*{termTo}"
                        class="form-control">
                 <label for="politicalParty">Political Party</label>
                 <input id="politicalParty" placeholder="Enter politicalParty" required type="text"
