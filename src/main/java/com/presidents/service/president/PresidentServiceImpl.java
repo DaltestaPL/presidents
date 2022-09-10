@@ -7,6 +7,9 @@ import com.presidents.model.entity.President;
 import com.presidents.model.mapper.PresidentMapper;
 import com.presidents.repository.PresidentsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,6 +30,12 @@ public class PresidentServiceImpl implements PresidentService {
     public List<PresidentDto> getAllPresidents() {
         return presidentsRepository.findAll().stream()
                 .map(PresidentMapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<PresidentDto> getAllPresidentsPaginated(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return presidentsRepository.findAll(pageable).map(PresidentMapper::toDto);
     }
 
     @Override
